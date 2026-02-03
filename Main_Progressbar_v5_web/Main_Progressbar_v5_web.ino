@@ -1,20 +1,36 @@
-#include <WiFi.h>
-#include <WiFiClientSecure.h>
+#ifdef ESP8266
+  // This code only compiles for ESP8266
+  #include <ESP8266WiFi.h>
+  #include <WiFiClientSecure.h>
+  // Serial.println("Compiling for ESP8266...");
+#elif defined(ESP32)
+  // This code only compiles for ESP32
+  #include <WiFi.h>
+  #include <WiFiClientSecure.h>
+  // Serial.println("Compiling for ESP32...");
+#else
+  #error "This code is only for ESP8266 or ESP32!"
+#endif
+
+// #include <WiFi.h>
+// #include <WiFiClientSecure.h>
 #include <PubSubClient.h>
 #include <FastLED.h>
 #include <ArduinoJson.h>
 
+#include "config.h"
+
 // ===============================
 // USER CONFIGURATION
 // ===============================
-const char* WIFI_SSID = "wifissid";
-const char* WIFI_PASS = "wifipassword";
+const char* WIFI_SSID = "Get-7368B0";
+const char* WIFI_PASS = "qjzkld2mjy";
 
-const char* MQTT_SERVER = "ipaddress";
+const char* MQTT_SERVER = "192.168.0.49";
 const int MQTT_PORT = 8883;
 const char* MQTT_USER = "bblp";
-const char* MQTT_PASS = "acesscode";
-const char* PRINTER_SERIAL = "printerserial";  // Printer Serial
+const char* MQTT_PASS = "10329878";
+const char* PRINTER_SERIAL = "01P199570600151";  // Printer Serial
 
 // ===============================
 // LED CONFIGURATION
@@ -23,6 +39,9 @@ const char* PRINTER_SERIAL = "printerserial";  // Printer Serial
 #define NUM_LEDS 13
 #define BRIGHTNESS 64
 #define MAX_MILLIWATTS 850
+
+
+//#include "SoundAlerting.h"  // For Sound Alerting
 
 int progressDirection = -1;
 uint8_t lastProgress = 0;
