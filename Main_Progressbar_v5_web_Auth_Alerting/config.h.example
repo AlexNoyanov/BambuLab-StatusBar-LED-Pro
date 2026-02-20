@@ -1,0 +1,40 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// ===============================
+// USER CONFIGURATION
+// ===============================
+// WiFi credentials - can be set via web portal or defaults below
+// If empty strings, device will start in AP mode for configuration
+const char* DEFAULT_WIFI_SSID = "";  // Leave empty to use web portal
+const char* DEFAULT_WIFI_PASS = "";  // Leave empty to use web portal
+
+// MQTT Configuration
+const char* MQTT_SERVER = "";  // Your MQTT server IP address (e.g., "192.168.1.100")
+const int MQTT_PORT = 8883;
+const char* MQTT_USER = "bblp";
+const char* MQTT_PASS = "";  // Your MQTT password
+const char* PRINTER_SERIAL = "";  // Your printer serial number
+
+// WiFi Portal Configuration
+const char* AP_SSID = "StatusBarPro-Setup";
+const char* AP_PASSWORD = "setup12345";  // Password for AP mode
+
+// ===============================
+// LED CONFIGURATION
+// ===============================
+#define DATA_PIN 5
+#define NUM_LEDS 13
+#define BRIGHTNESS 64
+#define MAX_MILLIWATTS 850
+
+// During printing: true = green progress + red remaining; false = green progress only (no red)
+#define PROGRESS_SHOW_RED_REMAINING false
+
+// ===============================
+// SOUND CONFIGURATION
+// ===============================
+#define BUZZER_PIN 6        // Use 6 for D6 (on ESP8266 code uses GPIO 12 automatically)
+#define SOUND_ENABLED true
+
+#endif // CONFIG_H
